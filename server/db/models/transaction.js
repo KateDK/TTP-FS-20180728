@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Position = db.define('position', {
+const Transaction = db.define('transaction', {
   tickerSymbol: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -9,9 +9,13 @@ const Position = db.define('position', {
   numShares: {
     type: Sequelize.INTEGER,
     validate: {
-      min: 0,
+      min: 1,
     },
+  },
+  action: {
+    type: Sequelize.ENUM,
+    values: ['buy', 'sell'],
   },
 });
 
-module.exports = Position;
+module.exports = Transaction;
