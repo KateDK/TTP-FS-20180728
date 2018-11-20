@@ -1,5 +1,5 @@
 {
-  "name": "example-create-react-app-express",
+  "name": "TTP-FS-20180728",
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
