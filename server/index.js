@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const SequelizeStore = require('connect-session-sequelize');
+// const SequelizeStore = require('connect-session-sequelize');
 const db = require('./db');
 // const sessionStore = SequelizeStore({ db });
 
@@ -13,7 +13,7 @@ app.use('/api', require('./api'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const syncDb = () => db.sync();
+const syncDb = () => db.sync({ force: true });
 
 async function bootApp() {
   // await sessionStore.sync();
