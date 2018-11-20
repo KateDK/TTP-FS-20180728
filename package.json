@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "connect-session-sequelize": "^6.0.0",
     "express": "^4.16.4",
     "pg": "^7.6.1",
     "pg-hstore": "^2.3.2",
