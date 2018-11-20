@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const SequelizeStore = require('connect-session-sequelize');
 const db = require('./db');
-// const sessionStore = SequelizeStore({ db });
 
 const app = express();
 const port = process.env.PORT || 5000;
