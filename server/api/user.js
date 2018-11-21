@@ -5,7 +5,7 @@ module.exports = router;
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await User.findById(id);
+    const user = await User.findByPk(id);
     res.json(user);
   } catch (err) {
     next(err);
@@ -15,7 +15,7 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/portfolio', async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await User.findById(id, {
+    const user = await User.findByPk(id, {
       include: [{ model: Position }],
     });
     res.json(user.positions);
@@ -27,7 +27,7 @@ router.get('/:id/portfolio', async (req, res, next) => {
 router.get('/:id/history', async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await User.findById(id, {
+    const user = await User.findByPk(id, {
       include: [{ model: Transaction }],
     });
     res.json(user.transactions);
