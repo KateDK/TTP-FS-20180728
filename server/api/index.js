@@ -2,6 +2,7 @@ const router = require('express').Router();
 module.exports = router;
 
 router.use('/user', require('./user'));
+router.use('/auth', require('./auth'));
 
 router.get('/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });

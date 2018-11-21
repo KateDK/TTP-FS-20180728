@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const Sequelize = require('sequelize');
 const db = require('../db');
 
@@ -58,7 +59,7 @@ User.encryptPassword = function(plainText, salt) {
   return crypto
     .createHash('RSA-SHA256')
     .update(plainText)
-    .update(salt)
+    .update(salt + '')
     .digest('hex');
 };
 
