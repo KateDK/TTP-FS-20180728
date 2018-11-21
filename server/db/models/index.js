@@ -2,13 +2,8 @@ const User = require('./user');
 const Position = require('./position');
 const Transaction = require('./transaction');
 
-User.belongsToMany(Transaction, {
-  through: { model: 'UserTransaction', unique: false },
-});
-Transaction.belongsToMany(User, {
-  through: { model: 'UserTransaction', unique: false },
-});
-
+Transaction.belongsTo(User);
+User.hasMany(Transaction);
 Position.belongsTo(User);
 User.hasMany(Position);
 
