@@ -50,7 +50,7 @@ router.post('/:id/buy/:ticker/:quantity', async (req, res, next) => {
     const stockInfo = stockRes.data.quote;
     const stockPrice = stockInfo.latestPrice;
     const totalStockPrice = stockPrice * quantity;
-    console.log('balance ==== >', balance);
+
     if (totalStockPrice > balance) {
       res.err('Balance too low!');
     } else {
@@ -68,6 +68,13 @@ router.post('/:id/buy/:ticker/:quantity', async (req, res, next) => {
         numShares: quantity,
         price: stockPrice,
       });
+      const [position, created] = await Position.findOrCreate({
+        where: { userId: id, tickerSymbol: stockInfo.symbol },
+        defaults: { numShares: quantity },
+      });
+      if (!created) {
+        await position.update({ numShares: position.numShares + quantity });
+      }
     }
 
     res.json(stockRes.data);
