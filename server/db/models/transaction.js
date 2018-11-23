@@ -13,8 +13,11 @@ const Transaction = db.define('transaction', {
     },
   },
   action: {
-    type: Sequelize.ENUM,
-    values: ['buy', 'sell'],
+    type: Sequelize.STRING,
+    defaultValue: 'buy',
+  },
+  price: {
+    type: Sequelize.INTEGER,
   },
 });
 
