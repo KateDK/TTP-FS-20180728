@@ -16,11 +16,22 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:id/portfolio', async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const user = await User.findByPk(id, {
-      include: [{ model: Position }],
+    const positions = await Position.findAll({
+      where: { userId: req.user.id },
     });
-    res.json(user.positions);
+    const userPositions = await Promise.all(
+      positions.map(async position => {
+        const symbol = position.dataValues.tickerSymbol;
+        const stockRes = await axios.get(
+          'https://api.iextrading.com/1.0/stock/' + `${symbol}` + '/book'
+        );
+        const stockInfo = stockRes.data.quote;
+        const stockPrice = stockInfo.latestPrice;
+        const totalStockVal = stockPrice * position.dataValues.numShares;
+        return { ...position.dataValues, totalStockVal, stockPrice };
+      })
+    );
+    res.json(userPositions);
   } catch (err) {
     next(err);
   }
