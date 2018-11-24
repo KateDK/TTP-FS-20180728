@@ -19,18 +19,30 @@ router.get('/:id/portfolio', async (req, res, next) => {
     const positions = await Position.findAll({
       where: { userId: req.user.id },
     });
-    const userPositions = await Promise.all(
-      positions.map(async position => {
-        const symbol = position.dataValues.tickerSymbol;
-        const stockRes = await axios.get(
-          'https://api.iextrading.com/1.0/stock/' + `${symbol}` + '/book'
-        );
-        const stockInfo = stockRes.data.quote;
-        const stockPrice = stockInfo.latestPrice;
-        const totalStockVal = stockPrice * position.dataValues.numShares;
-        return { ...position.dataValues, totalStockVal, stockPrice };
-      })
+    const symbols = positions.map(position => position.dataValues.tickerSymbol);
+    if (!symbols.length) {
+      res.json([]);
+      return;
+    }
+    const stockRes = await axios.get(
+      'https://api.iextrading.com/1.0/stock/market/batch?symbols=' +
+        symbols.join(',') +
+        '&types=quote'
     );
+    const userPositions = positions.map(position => {
+      const symbol = position.dataValues.tickerSymbol;
+
+      const stockInfo = stockRes.data[symbol].quote;
+      const stockPrice = stockInfo.latestPrice;
+      const totalStockVal = stockPrice * position.dataValues.numShares;
+      let trend = 'same';
+      if (stockInfo.latestPrice > stockInfo.open) {
+        trend = 'up';
+      } else if (stockInfo.latestPrice < stockInfo.open) {
+        trend = 'down';
+      }
+      return { ...position.dataValues, totalStockVal, stockPrice, trend };
+    });
     res.json(userPositions);
   } catch (err) {
     next(err);
