@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Request = require('request');
+// const Request = require('request');
 const axios = require('axios');
 const { User, Position, Transaction } = require('../db/models');
 module.exports = router;
@@ -25,9 +25,9 @@ router.get('/:id/portfolio', async (req, res, next) => {
       return;
     }
     const stockRes = await axios.get(
-      'https://api.iextrading.com/1.0/stock/market/batch?symbols=' +
-        symbols.join(',') +
-        '&types=quote'
+      `https://api.iextrading.com/1.0/stock/market/batch?symbols=${symbols.join(
+        ','
+      )}&types=quote`
     );
     const userPositions = positions.map(position => {
       const symbol = position.dataValues.tickerSymbol;
@@ -68,7 +68,7 @@ router.post('/:id/buy/:ticker/:quantity', async (req, res, next) => {
     const quantity = +req.params.quantity;
     const balance = req.user.balance;
     const stockRes = await axios.get(
-      'https://api.iextrading.com/1.0/stock/' + `${symbol}` + '/book'
+      `https://api.iextrading.com/1.0/stock/${symbol}/book`
     );
     const stockInfo = stockRes.data.quote;
     const stockPrice = stockInfo.latestPrice;
