@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { auth } from '../store';
 import ReactSignupLoginComponent from 'react-signup-login-component';
 
 const AuthForm = () => {
@@ -18,6 +20,8 @@ const AuthForm = () => {
     <div>
       <ReactSignupLoginComponent
         usernameCustomLabel="Email"
+        // goToSignupCustomLabel="Signup"
+        submitLoginCustomLabel="Login"
         title="Signup/Signin"
         handleSignup={signupWasClickedCallback}
         handleLogin={loginWasClickedCallback}
@@ -36,4 +40,19 @@ const AuthForm = () => {
   );
 };
 
-export default AuthForm;
+const mapSignupDispatch = (dispatch, data) => {
+  return {
+    handleSubmit(evt) {
+      evt.preventDefault();
+      const method = data.passwordConfirmation ? 'signin' : 'login';
+      const email = data.username;
+      const password = data.password;
+      dispatch(auth(email, password, method));
+    },
+  };
+};
+
+// export const Login = connect(
+//   mapLoginDispatch
+// )(AuthForm);
+export default connect(mapSignupDispatch)(AuthForm);

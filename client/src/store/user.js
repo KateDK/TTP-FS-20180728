@@ -10,7 +10,12 @@ const REMOVE_USER = 'REMOVE_USER';
 /**
  * INITIAL STATE
  */
-const defaultUser = {};
+const defaultUser = {
+  id: 1,
+  name: 'Kate',
+  email: 'k@e.com',
+  balance: 5000,
+};
 
 /**
  * ACTION CREATORS
@@ -21,7 +26,20 @@ const removeUser = () => ({ type: REMOVE_USER });
 /**
  * THUNK CREATORS
  */
+export const auth = (email, password, method) => async dispatch => {
+  let res;
+  try {
+    res = await axios.post(`/auth/${method}`, { email, password });
+  } catch (authError) {
+    return dispatch(getUser({ error: authError }));
+  }
 
+  try {
+    dispatch(getUser(res.data));
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr);
+  }
+};
 /**
  * REDUCER
  */
