@@ -65,7 +65,7 @@ router.post('/:id/buy/:ticker/:quantity', async (req, res, next) => {
   try {
     const id = req.user.id;
     const symbol = req.params.ticker;
-    const quantity = req.params.quantity;
+    const quantity = +req.params.quantity;
     const balance = req.user.balance;
     const stockRes = await axios.get(
       'https://api.iextrading.com/1.0/stock/' + `${symbol}` + '/book'
