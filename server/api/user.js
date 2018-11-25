@@ -4,9 +4,9 @@ const axios = require('axios');
 const { User, Position, Transaction } = require('../db/models');
 module.exports = router;
 
-router.get('/:id', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.user.id;
     const user = await User.findByPk(id);
     res.json(user);
   } catch (err) {
@@ -14,7 +14,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.get('/:id/portfolio', async (req, res, next) => {
+router.get('/portfolio', async (req, res, next) => {
   try {
     const positions = await Position.findAll({
       where: { userId: req.user.id },
@@ -49,9 +49,9 @@ router.get('/:id/portfolio', async (req, res, next) => {
   }
 });
 
-router.get('/:id/history', async (req, res, next) => {
+router.get('/history', async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.user.id;
     const user = await User.findByPk(id, {
       include: [{ model: Transaction }],
     });
@@ -61,7 +61,7 @@ router.get('/:id/history', async (req, res, next) => {
   }
 });
 
-router.post('/:id/buy/:ticker/:quantity', async (req, res, next) => {
+router.post('/buy/:ticker/:quantity', async (req, res, next) => {
   try {
     const id = req.user.id;
     const symbol = req.params.ticker;

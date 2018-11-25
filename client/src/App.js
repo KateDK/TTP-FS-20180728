@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Navbar, AuthForm } from './components';
+import { Navbar, AuthForm, Portfolio } from './components';
 
 class App extends Component {
   render() {
@@ -9,6 +9,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <AuthForm />
+        <Portfolio />
       </div>
     );
   }
