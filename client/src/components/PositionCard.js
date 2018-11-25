@@ -4,10 +4,10 @@ const PositionCard = props => {
   const { tickerSymbol, numShares, totalStockVal, trend } = props.position;
   return (
     <div>
-      <p>{tickerSymbol}</p>
-      <p>{numShares}</p>
-      <p>{totalStockVal}</p>
-      <p>{trend}</p>
+      <span>{tickerSymbol} - </span>
+      <span>{numShares} shares </span>
+      <span>{totalStockVal} </span>
+      <span>{trend} </span>
     </div>
   );
 };

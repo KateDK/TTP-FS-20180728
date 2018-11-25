@@ -7,6 +7,7 @@ const Transactions = props => {
   const transactions = props.transactions;
   return (
     <div>
+      <h1>User Transaction History</h1>
       <ul>
         {transactions.map(transaction => (
           <li key={transaction.id}>

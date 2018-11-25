@@ -16,10 +16,10 @@ const TransactionCard = props => {
   const { action, tickerSymbol, numShares, price } = props.transaction;
   return (
     <div>
-      <p>{action}</p>
-      <p>{tickerSymbol}</p>
-      <p>{numShares}</p>
-      <p>@{price}</p>
+      <span>{action} </span>
+      <span>({tickerSymbol}) </span>
+      <span>{numShares} shares </span>
+      <span>@ {price}</span>
     </div>
   );
 };
