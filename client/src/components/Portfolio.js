@@ -2,6 +2,7 @@ import React from 'react';
 import BuyForm from './BuyForm';
 import { connect } from 'react-redux';
 import { getPositions } from '../store';
+import PositionCard from './PositionCard';
 
 const Portfolio = props => {
   const { positions, balance } = props;
@@ -11,7 +12,9 @@ const Portfolio = props => {
       <h1>user positions</h1>
       <ul>
         {positions.map(position => (
-          <li>{position.tickerSymbol}</li>
+          <li>
+            <PositionCard position={position} />
+          </li>
         ))}
       </ul>
       <BuyForm userBalance={balance} />
