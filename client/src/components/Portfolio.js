@@ -5,8 +5,8 @@ import { getPositions } from '../store';
 import PositionCard from './PositionCard';
 
 class Portfolio extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   render() {
     const { positions, balance } = this.props;
