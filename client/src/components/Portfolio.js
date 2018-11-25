@@ -13,7 +13,7 @@ const Portfolio = props => {
       <ul>
         {positions.map(position => (
           <li>
-            <PositionCard position={position} />
+            <PositionCard key={position.id} position={position} />
           </li>
         ))}
       </ul>

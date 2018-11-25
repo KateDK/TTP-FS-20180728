@@ -27,7 +27,6 @@ const removeUser = () => ({ type: REMOVE_USER });
  * THUNK CREATORS
  */
 export const auth = (email, password, method) => async dispatch => {
-  console.log('I am triggered');
   let res;
   try {
     res = await axios.post(`/api/auth/${method}`, { email, password });
