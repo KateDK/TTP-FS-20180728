@@ -1,26 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { auth } from '../store';
+import { auth } from '../store/user';
 import ReactSignupLoginComponent from 'react-signup-login-component';
 
-const AuthForm = () => {
+const AuthForm = props => {
   const signupWasClickedCallback = data => {
-    console.log(data);
-    alert('Signup callback, see log on the console to see the data.');
+    console.log(
+      'Signup callback, see log on the console to see the data. ',
+      data
+    );
+    props.handleAuth(data);
   };
   const loginWasClickedCallback = data => {
-    console.log(data);
-    alert('Login callback, see log on the console to see the data.');
+    console.log(
+      'Login callback, see log on the console to see the data. ',
+      data
+    );
+    props.handleAuth(data);
   };
   const recoverPasswordWasClickedCallback = data => {
     console.log(data);
-    alert('Recover password callback, see log on the console to see the data.');
+    return;
   };
   return (
     <div>
       <ReactSignupLoginComponent
         usernameCustomLabel="Email"
-        // goToSignupCustomLabel="Signup"
         submitLoginCustomLabel="Login"
         title="Signup/Signin"
         handleSignup={signupWasClickedCallback}
@@ -40,11 +45,10 @@ const AuthForm = () => {
   );
 };
 
-const mapSignupDispatch = (dispatch, data) => {
+const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
-      evt.preventDefault();
-      const method = data.passwordConfirmation ? 'signin' : 'login';
+    handleAuth: data => {
+      const method = data.passwordConfirmation ? 'signup' : 'login';
       const email = data.username;
       const password = data.password;
       dispatch(auth(email, password, method));
@@ -52,7 +56,7 @@ const mapSignupDispatch = (dispatch, data) => {
   };
 };
 
-// export const Login = connect(
-//   mapLoginDispatch
-// )(AuthForm);
-export default connect(mapSignupDispatch)(AuthForm);
+export default connect(
+  null,
+  mapDispatch
+)(AuthForm);
