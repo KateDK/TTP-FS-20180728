@@ -6,7 +6,7 @@ import PositionCard from './PositionCard';
 
 const Portfolio = props => {
   const { positions, balance } = props;
-  console.log('POSITIONS: ', positions);
+
   return (
     <div>
       <h1>user positions</h1>
