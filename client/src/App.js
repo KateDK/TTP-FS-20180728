@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Routes from './routes';
 import './App.css';
 import { Navbar, AuthForm, Portfolio, Transactions } from './components';
 
@@ -8,9 +9,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <AuthForm />
+        {/* <AuthForm />
         <Portfolio />
-        <Transactions />
+        <Transactions /> */}
+        <Routes />
       </div>
     );
   }
