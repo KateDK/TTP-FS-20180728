@@ -50,13 +50,29 @@ button {
 
 .portfolio {
   /* background-color: aqua; */
-  display: grid;
-  grid-template-columns: 50% 500px;
+  /* display: grid;
+  grid-template-columns: 50% 500px; */
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
 }
 .positionsList {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  border: 3px solid black;
+  width: 500px;
+  margin: 1em;
+  align-self: end;
+}
+.positionCard {
+  width: 100%;
+  margin: 1em;
+  padding-bottom: 1em;
+  text-align: left;
+  /* display: grid;
+  grid-template-columns: 10% 10% 10% 10% outo; */
+  border-bottom: 2px solid grey;
 }
 
 .buyForm {
@@ -65,7 +81,7 @@ button {
   grid-template-columns: outo;
   justify-items: center;
   border: 3px solid black;
-  max-width: 500px;
+  width: 500px;
   margin: 1em;
 }
 .formBody {
@@ -81,4 +97,16 @@ button {
 }
 .formItem input {
   width: 100%;
+}
+
+.up {
+  color: green;
+}
+
+.down {
+  color: red;
+}
+
+.same {
+  color: grey;
 }

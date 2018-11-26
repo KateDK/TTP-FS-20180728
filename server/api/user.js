@@ -29,19 +29,25 @@ router.get('/portfolio', async (req, res, next) => {
         ','
       )}&types=quote`
     );
+
     const userPositions = positions.map(position => {
       const symbol = position.dataValues.tickerSymbol;
-
       const stockInfo = stockRes.data[symbol].quote;
       const stockPrice = stockInfo.latestPrice;
       const totalStockVal = stockPrice * position.dataValues.numShares;
+
       let trend = 'same';
       if (stockInfo.latestPrice > stockInfo.open) {
         trend = 'up';
       } else if (stockInfo.latestPrice < stockInfo.open) {
         trend = 'down';
       }
-      return { ...position.dataValues, totalStockVal, stockPrice, trend };
+      return {
+        ...position.dataValues,
+        totalStockVal,
+        stockPrice,
+        trend,
+      };
     });
     res.json(userPositions);
   } catch (err) {

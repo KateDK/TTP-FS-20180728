@@ -12,21 +12,21 @@ class Portfolio extends Component {
     const { positions, balance } = this.props;
 
     return (
-      <div>
+      <div className="portfolio_wrapper">
         <h1>Your Portfolio</h1>
-        <span className="portfolio">
-          <span className="positionsList">
-            <h3>Total Portfolio Value: </h3>
-            <ul>
+        <div className="portfolio">
+          <div>
+            <h3>Total Portfolio Value: {}</h3>
+            <ul className="positionsList">
               {positions.map(position => (
                 <li key={position.id}>
                   <PositionCard position={position} />
                 </li>
               ))}
             </ul>
-          </span>
+          </div>
           <BuyForm userBalance={balance} />
-        </span>
+        </div>
       </div>
     );
   }
