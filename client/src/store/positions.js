@@ -12,28 +12,28 @@ const REMOVE_POSITION = 'REMOVE_POSITION'; //DO WE REALLY NEED THIS??
  * INITIAL STATE
  */
 const defaultPositions = [
-  {
-    id: 1,
-    tickerSymbol: 'AAPL',
-    numShares: 5,
-    createdAt: '2018-11-25T21:35:10.046Z',
-    updatedAt: '2018-11-25T21:35:10.046Z',
-    userId: 1,
-    totalStockVal: 861.4499999999999,
-    stockPrice: 172.29,
-    trend: 'down',
-  },
-  {
-    id: 2,
-    tickerSymbol: 'FB',
-    numShares: 5,
-    createdAt: '2018-11-25T21:35:10.046Z',
-    updatedAt: '2018-11-25T21:35:10.046Z',
-    userId: 1,
-    totalStockVal: 861.4499999999999,
-    stockPrice: 172.29,
-    trend: 'down',
-  },
+  // {
+  //   id: 1,
+  //   tickerSymbol: 'AAPL',
+  //   numShares: 5,
+  //   createdAt: '2018-11-25T21:35:10.046Z',
+  //   updatedAt: '2018-11-25T21:35:10.046Z',
+  //   userId: 1,
+  //   totalStockVal: 861.4499999999999,
+  //   stockPrice: 172.29,
+  //   trend: 'down',
+  // },
+  // {
+  //   id: 2,
+  //   tickerSymbol: 'FB',
+  //   numShares: 5,
+  //   createdAt: '2018-11-25T21:35:10.046Z',
+  //   updatedAt: '2018-11-25T21:35:10.046Z',
+  //   userId: 1,
+  //   totalStockVal: 861.4499999999999,
+  //   stockPrice: 172.29,
+  //   trend: 'down',
+  // },
 ];
 
 /**

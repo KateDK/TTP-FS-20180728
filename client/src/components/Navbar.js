@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import {logout} from './store'
+import { logout } from '../store';
 
-const Navbar = isLoggedIn => (
+const Navbar = ({ isLoggedIn, handleClick }) => (
   <div>
     <nav className="navbar">
       <div className="collapse navbar-collapse" id="navbarLinks">
@@ -18,7 +17,9 @@ const Navbar = isLoggedIn => (
                 <Link to="/transactions">Transactions</Link>
               </li>
               <li className="nav-item">
-                <Link to="/">Logout</Link>
+                <a href="#" onClick={handleClick} className="nav-link">
+                  Logout
+                </a>
               </li>
             </span>
           ) : (
@@ -38,7 +39,13 @@ const mapState = state => {
   };
 };
 
+const mapDispatch = dispatch => {
+  return {
+    handleClick: () => dispatch(logout()),
+  };
+};
+
 export default connect(
   mapState,
-  null
+  mapDispatch
 )(Navbar);

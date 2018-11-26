@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 import { fetchPositions } from './positions';
 import { fetchTransactions } from './transactions';
 
@@ -15,10 +16,10 @@ const UPDATE_BALANCE = 'UPDATE_BALANCE';
  * INITIAL STATE
  */
 const defaultUser = {
-  id: 1,
-  name: 'Kate',
-  email: 'k@e.com',
-  balance: 5000,
+  // id: 1,
+  // name: 'Kate',
+  // email: 'k@e.com',
+  // balance: 5000,
 };
 
 /**
@@ -68,6 +69,17 @@ export const auth = (email, password, method) => async dispatch => {
     console.error(dispatchOrHistoryErr);
   }
 };
+
+export const logout = () => async dispatch => {
+  try {
+    await axios.post('/auth/logout');
+    dispatch(removeUser());
+    history.push('/login');
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 /**
  * REDUCER
  */
