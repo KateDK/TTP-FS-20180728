@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTransactions } from '../store';
+import { fetchTransactions } from '../store';
 import TransactionCard from './TransactionCard';
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    this.props.fetchTransactions();
   }
   render() {
     const transactions = this.props.transactions;
@@ -29,7 +32,13 @@ const mapState = state => {
     transactions: state.transactions,
   };
 };
+
+const mapDispatch = dispatch => {
+  return {
+    fetchTransactions: () => dispatch(fetchTransactions()),
+  };
+};
 export default connect(
   mapState,
-  null
+  mapDispatch
 )(Transactions);
