@@ -17,11 +17,11 @@ class Portfolio extends Component {
 
     return (
       <div>
-        <h1>user positions</h1>
+        <h1>Your Portfolio</h1>
         <ul>
           {positions.map(position => (
-            <li>
-              <PositionCard key={position.id} position={position} />
+            <li key={position.id}>
+              <PositionCard position={position} />
             </li>
           ))}
         </ul>
