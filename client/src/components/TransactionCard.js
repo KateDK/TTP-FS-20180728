@@ -19,7 +19,7 @@ const TransactionCard = props => {
       <span>{action} </span>
       <span>({tickerSymbol}) </span>
       <span>{numShares} shares </span>
-      <span>@ {price}</span>
+      <span>@ {Number(price).toFixed(2)}</span>
     </div>
   );
 };

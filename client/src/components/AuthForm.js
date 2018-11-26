@@ -37,11 +37,10 @@ const AuthForm = props => {
             margin: 0,
           },
           recoverPassword: {
-            wrapper: { backgroundColor: 'yellow' },
-            inputWrapper: { backgroundColor: 'AliceBlue' },
-            buttonsWrapper: { backgroundColor: 'Aqua' },
-            input: { backgroundColor: 'LavenderBlush' },
-            button: { backgroundColor: 'LightCoral' },
+            button: {
+              visibility: 'hidden',
+              display: 'none',
+            },
           },
         }}
       />

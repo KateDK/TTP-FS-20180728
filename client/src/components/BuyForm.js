@@ -30,7 +30,7 @@ class BuyForm extends Component {
     console.log(this.state);
     return (
       <div>
-        <h1>{userBalance}</h1>
+        <h1>Your Balance: ${Number(userBalance).toFixed(2)}</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Ticker</label>
           <input

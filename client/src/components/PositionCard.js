@@ -6,7 +6,7 @@ const PositionCard = props => {
     <div>
       <span>{tickerSymbol} - </span>
       <span>{numShares} shares </span>
-      <span>{totalStockVal} </span>
+      <span>{Number(totalStockVal).toFixed(2)} </span>
       <span>{trend} </span>
     </div>
   );

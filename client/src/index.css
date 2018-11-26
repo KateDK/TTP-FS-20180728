@@ -12,6 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#recover-password:parent {
+  display: none !important;
+  visibility: hidden important;
+}
 
 .authForm {
   margin: auto;
