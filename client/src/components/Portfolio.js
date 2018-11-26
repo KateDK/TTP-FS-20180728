@@ -18,14 +18,19 @@ class Portfolio extends Component {
     return (
       <div>
         <h1>Your Portfolio</h1>
-        <ul>
-          {positions.map(position => (
-            <li key={position.id}>
-              <PositionCard position={position} />
-            </li>
-          ))}
-        </ul>
-        <BuyForm userBalance={balance} />
+        <span className="portfolio">
+          <span className="positionsList">
+            <h3>Total Portfolio Value: </h3>
+            <ul>
+              {positions.map(position => (
+                <li key={position.id}>
+                  <PositionCard position={position} />
+                </li>
+              ))}
+            </ul>
+          </span>
+          <BuyForm userBalance={balance} />
+        </span>
       </div>
     );
   }

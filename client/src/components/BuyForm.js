@@ -29,24 +29,32 @@ class BuyForm extends Component {
     const { userBalance } = this.props;
     console.log(this.state);
     return (
-      <div>
+      <div className="buyForm">
         <h1>Your Balance: ${Number(userBalance).toFixed(2)}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Ticker</label>
-          <input
-            type="text"
-            name="ticker"
-            value={this.state.ticker}
-            onChange={this.handleChange}
-          />
-          <label>Qty</label>
-          <input
-            type="number"
-            name="quantity"
-            value={this.state.quantity}
-            onChange={this.handleChange}
-          />
-          <button type="submit">BUY</button>
+        <form onSubmit={this.handleSubmit} className="formBody">
+          <div className="formItem">
+            <label>Ticker</label>
+            <input
+              type="text"
+              name="ticker"
+              // placeholder="Ticker"
+              value={this.state.ticker}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="formItem">
+            <label>Qty</label>
+            <input
+              type="number"
+              name="quantity"
+              placeholder=""
+              value={this.state.quantity}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button className="formItem" type="submit">
+            BUY
+          </button>
         </form>
       </div>
     );

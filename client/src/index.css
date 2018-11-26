@@ -35,7 +35,7 @@ ul {
 }
 
 button {
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 5px;
 }
 .nav-item {
@@ -46,4 +46,38 @@ button {
 
 .nav-item:hover {
   background-color: rgb(225, 222, 222);
+}
+
+.portfolio {
+  /* background-color: aqua; */
+  display: grid;
+  grid-template-columns: 50% 500px;
+}
+.positionsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.buyForm {
+  /* padding: 1em; */
+  display: grid;
+  grid-template-columns: outo;
+  justify-items: center;
+  border: 3px solid black;
+  max-width: 500px;
+}
+.formBody {
+  width: 100%;
+  padding: 1em;
+}
+
+.formItem {
+  width: 90%;
+  /* padding: 1em; */
+  margin: 1em;
+  text-align: left;
+}
+.formItem input {
+  width: 100%;
 }
