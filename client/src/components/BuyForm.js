@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createBuyStocks } from '../store';
 
 class BuyForm extends Component {
   constructor(props) {
@@ -16,8 +18,10 @@ class BuyForm extends Component {
   }
 
   handleSubmit(event) {
+    const ticker = this.state.ticker;
+    const quantity = this.state.quantity;
     event.preventDefault();
-    // await axios.post('/api/campuses', this.state);
+    this.props.createBuyStocks(ticker, quantity);
     this.setState({ ticker: '', quantity: 0 });
   }
 
@@ -49,4 +53,15 @@ class BuyForm extends Component {
   }
 }
 
-export default BuyForm;
+//export default BuyForm;
+
+const mapDispatch = dispatch => {
+  return {
+    createBuyStocks: (ticker, quantity) =>
+      dispatch(createBuyStocks(ticker, quantity)),
+  };
+};
+export default connect(
+  null,
+  mapDispatch
+)(BuyForm);

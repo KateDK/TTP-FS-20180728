@@ -1,6 +1,6 @@
 import axios from 'axios';
-import fetchPositions from './positions';
-import fetchTransactions from './transactions';
+import { fetchPositions } from './positions';
+import { fetchTransactions } from './transactions';
 
 /**
  * ACTION TYPES
@@ -44,9 +44,11 @@ export const createBuyStocks = (ticker, quantity) => async dispatch => {
     return dispatch(buyFaild({ error: err }));
   }
   try {
-    dispatch(fetchPositions);
-    dispatch(fetchTransactions);
-    dispatch(updateBalance(res.data.balance));
+    return Promise.all([
+      dispatch(fetchPositions()),
+      dispatch(fetchTransactions()),
+      dispatch(updateBalance(res.data.balance)),
+    ]);
   } catch (err) {
     console.log(err);
   }
@@ -76,7 +78,7 @@ export default function(state = defaultUser, action) {
     case REMOVE_USER:
       return defaultUser;
     case UPDATE_BALANCE:
-      return action.balance;
+      return { ...state, balance: action.balance };
     default:
       return state;
   }
