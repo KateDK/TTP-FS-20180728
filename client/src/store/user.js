@@ -1,11 +1,15 @@
 import axios from 'axios';
-import history from '../history';
+import fetchPositions from './positions';
+import fetchTransactions from './transactions';
 
 /**
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
+const BUY_STOCKS = 'BUY_STOCKS';
+const BUY_FAILD = 'BUY_FAILD';
+const UPDATE_BALANCE = 'UPDATE_BALANCE';
 
 /**
  * INITIAL STATE
@@ -23,9 +27,31 @@ const defaultUser = {
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
 
+const buyStocks = stocks => ({ type: BUY_STOCKS, stocks });
+
+const buyFaild = message => ({ type: BUY_FAILD, message });
+
+const updateBalance = balance => ({ type: UPDATE_BALANCE, balance });
+
 /**
  * THUNK CREATORS
  */
+export const createBuyStocks = (ticker, quantity) => async dispatch => {
+  let res;
+  try {
+    res = await axios.post(`/api/user/buy/${ticker}/${quantity}`);
+  } catch (err) {
+    return dispatch(buyFaild({ error: err }));
+  }
+  try {
+    dispatch(fetchPositions);
+    dispatch(fetchTransactions);
+    dispatch(updateBalance(res.data.balance));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const auth = (email, password, method) => async dispatch => {
   let res;
   try {
@@ -49,6 +75,8 @@ export default function(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
+    case UPDATE_BALANCE:
+      return action.balance;
     default:
       return state;
   }

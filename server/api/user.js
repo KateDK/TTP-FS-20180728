@@ -100,7 +100,7 @@ router.post('/buy/:ticker/:quantity', async (req, res, next) => {
       }
     }
 
-    res.json(stockRes.data);
+    res.json({ newBalance: req.user.balance });
   } catch (err) {
     next(err);
   }
