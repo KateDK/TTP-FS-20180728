@@ -25,3 +25,12 @@ code {
 ul {
   list-style-type: none;
 }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid black;
+}
+
+.nav-item {
+}
