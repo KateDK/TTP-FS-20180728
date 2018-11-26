@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import BuyForm from './BuyForm';
 import { connect } from 'react-redux';
-import { getPositions } from '../store';
+import { fetchPositions } from '../store';
 import PositionCard from './PositionCard';
 
 class Portfolio extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchPositions();
   }
   render() {
     const { positions, balance } = this.props;
@@ -36,7 +40,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getPositions: () => dispatch(getPositions()),
+    fetchPositions: () => dispatch(fetchPositions()),
   };
 };
 

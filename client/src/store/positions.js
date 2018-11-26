@@ -39,12 +39,25 @@ const defaultPositions = [
 /**
  * ACTION CREATORS
  */
-const getPositions = () => ({ type: GET_POSITIONS });
-const updatePosition = position => ({ type: UPDATE_POSITION });
+const getPositions = positions => ({ type: GET_POSITIONS, positions });
 
 /**
  * THUNK CREATORS
  */
+
+export const fetchPositions = () => async dispatch => {
+  let res;
+  try {
+    res = await axios.get('/api/user/portfolio');
+  } catch (err) {
+    console.log(err);
+  }
+  try {
+    dispatch(getPositions(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
 // export const getAllPositions = (email, password, method) => async dispatch => {
 //   let res;
 //   try {
@@ -65,7 +78,7 @@ const updatePosition = position => ({ type: UPDATE_POSITION });
 export default function(state = defaultPositions, action) {
   switch (action.type) {
     case GET_POSITIONS:
-      return action.position;
+      return [...action.positions];
     default:
       return state;
   }
