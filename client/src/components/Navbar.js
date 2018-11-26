@@ -6,21 +6,18 @@ import { logout } from '../store';
 const Navbar = ({ isLoggedIn, handleClick }) =>
   isLoggedIn ? (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <ul className="navbar-nav">
-          <span className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to="/portfolio">Portfolio</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/transactions">Transactions</Link>
-            </li>
+      <nav className="navbar">
+        <button className="nav-item">
+          <Link to="/portfolio">Portfolio</Link>
+        </button>
 
-            <a href="#" onClick={handleClick} className="nav-item nav-link">
-              Logout
-            </a>
-          </span>
-        </ul>
+        <button className="nav-item">
+          <Link to="/transactions">Transactions</Link>
+        </button>
+
+        <button onClick={handleClick} className="nav-item ">
+          Logout
+        </button>
       </nav>
     </div>
   ) : null;
