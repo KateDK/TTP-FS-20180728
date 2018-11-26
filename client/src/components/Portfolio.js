@@ -5,10 +5,6 @@ import { fetchPositions } from '../store';
 import PositionCard from './PositionCard';
 
 class Portfolio extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchPositions();
   }
