@@ -22,11 +22,11 @@ const Navbar = ({ isLoggedIn, handleClick }) => (
                 </a>
               </li>
             </span>
-          ) : (
-            <li className="nav-item">
-              <Link to="/">Sign Up / Logg In</Link>
-            </li>
-          )}
+          ) : null
+          // <li className="nav-item">
+          //   <Link to="/">Sign Up / Logg In</Link>
+          // </li>
+          }
         </ul>
       </div>
     </nav>

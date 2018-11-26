@@ -23,7 +23,7 @@ const AuthForm = props => {
     return;
   };
   return (
-    <div>
+    <div className="authForm">
       <ReactSignupLoginComponent
         usernameCustomLabel="Email"
         submitLoginCustomLabel="Login"
@@ -32,6 +32,10 @@ const AuthForm = props => {
         handleLogin={loginWasClickedCallback}
         handleRecoverPassword={recoverPasswordWasClickedCallback}
         styles={{
+          mainWrapper: {
+            padding: 0,
+            margin: 0,
+          },
           recoverPassword: {
             wrapper: { backgroundColor: 'yellow' },
             inputWrapper: { backgroundColor: 'AliceBlue' },
