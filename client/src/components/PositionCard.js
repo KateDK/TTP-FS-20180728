@@ -5,10 +5,13 @@ const PositionCard = props => {
 
   return (
     <div className="positionCard">
-      <span>{tickerSymbol} - </span>
-      <span>{numShares} shares </span>
-      <span className={trend}>{Number(totalStockVal).toFixed(2)} </span>
-      <span>{trend} </span>
+      <span>
+        {tickerSymbol} - {numShares} shares
+      </span>
+      <span className="positionCardItem">
+        <span className={trend}>${Number(totalStockVal).toFixed(2)} </span>
+        <span>{trend} </span>
+      </span>
     </div>
   );
 };

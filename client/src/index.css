@@ -44,14 +44,20 @@ button {
   background-color: rgb(238, 238, 238);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
 .nav-item:hover {
   background-color: rgb(225, 222, 222);
 }
 
 .portfolio {
-  /* background-color: aqua; */
-  /* display: grid;
-  grid-template-columns: 50% 500px; */
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -60,20 +66,24 @@ button {
   display: grid;
   grid-template-columns: auto;
   justify-items: center;
-  /* border: 3px solid black; */
   width: 500px;
   margin: 1em;
-  align-self: end;
+  text-align: left;
 }
+
 .positionCard {
   width: 100%;
   margin: 1em;
   padding-bottom: 1em;
-  /* text-align: left; */
+
   text-align: justify;
-  /* display: grid;
-  grid-template-columns: 10% 10% 10% 10% outo; */
   border-bottom: 2px solid grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.positionCardItem {
+  align-self: flex-end;
 }
 
 .buyForm {
