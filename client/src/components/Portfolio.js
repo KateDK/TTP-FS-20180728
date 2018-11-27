@@ -10,13 +10,17 @@ class Portfolio extends Component {
   }
   render() {
     const { positions, balance } = this.props;
+    let totalPortfolioValue = 0;
+    positions.map(position => (totalPortfolioValue += position.totalStockVal));
 
     return (
       <div className="portfolio_wrapper">
         <h1>Your Portfolio</h1>
         <div className="portfolio">
           <div>
-            <h3>Total Portfolio Value: {}</h3>
+            <h3>
+              Total Portfolio Value: ${Number(totalPortfolioValue).toFixed(2)}
+            </h3>
             <ul className="positionsList font">
               {positions.map(position => (
                 <li key={position.id}>

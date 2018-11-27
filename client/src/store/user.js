@@ -15,12 +15,7 @@ const UPDATE_BALANCE = 'UPDATE_BALANCE';
 /**
  * INITIAL STATE
  */
-const defaultUser = {
-  // id: 1,
-  // name: 'Kate',
-  // email: 'k@e.com',
-  // balance: 5000,
-};
+const defaultUser = {};
 
 /**
  * ACTION CREATORS

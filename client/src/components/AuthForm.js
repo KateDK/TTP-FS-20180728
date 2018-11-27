@@ -36,11 +36,8 @@ const AuthForm = props => {
             padding: 0,
             margin: 0,
           },
-          recoverPassword: {
-            button: {
-              visibility: 'hidden',
-              display: 'none',
-            },
+          login: {
+            recoverPasswordWrapper: { visibility: 'hidden', height: '30px' },
           },
         }}
       />
