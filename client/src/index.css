@@ -36,10 +36,6 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
-  background-color: rgb(238, 238, 238);
-}
-
 .nav-item {
   margin-left: 1em;
   border: none;
