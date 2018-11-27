@@ -7,7 +7,7 @@ import PositionCard from './PositionCard';
 class Portfolio extends Component {
   componentDidMount() {
     this.props.fetchPositions();
-    this.interval = setInterval(() => this.props.fetchPositions(), 1000);
+    this.interval = setInterval(() => this.props.fetchPositions(), 30000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
