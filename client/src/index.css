@@ -59,6 +59,11 @@ a:visited {
   flex-flow: row;
   justify-content: center;
 }
+
+.portfolio_wrapper {
+  margin-top: 2em;
+}
+
 .portfolioDisplay {
   display: flex;
   flex-flow: column;
@@ -140,10 +145,15 @@ h3 {
   letter-spacing: -2px;
 }
 
+.transactionHistory {
+  margin-top: 2em;
+}
+
 .transactionList {
   width: 500px;
   border: 3px solid black;
   margin: auto;
+  margin-top: 2em;
   padding: 1.5em;
 }
 

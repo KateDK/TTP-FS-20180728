@@ -13,8 +13,8 @@ class Transactions extends Component {
       return <h3>No transactions yet</h3>;
     }
     return (
-      <div>
-        <h3>Transaction History</h3>
+      <div className="transactionHistory">
+        <h1>Transaction History</h1>
         <ul className="transactionList">
           {transactions.map(transaction => (
             <li key={transaction.id}>
