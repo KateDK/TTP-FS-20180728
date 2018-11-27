@@ -16,10 +16,11 @@ const TransactionCard = props => {
   const { action, tickerSymbol, numShares, price } = props.transaction;
   return (
     <div className="transactionCard font">
-      <span>
-        {action} ({tickerSymbol}) {numShares} shares @{' '}
-        {Number(price).toFixed(2)}
+      <span className="transactionCardItem first">
+        {action} ({tickerSymbol})
       </span>
+      <span className="transactionCardItem"> {numShares} shares </span>
+      <span className="transactionCardItem">@ {Number(price).toFixed(2)}</span>
     </div>
   );
 };
