@@ -18,6 +18,7 @@ code {
   padding: 5%;
   width: 500px;
 }
+
 ul {
   list-style-type: none;
 }
@@ -34,6 +35,11 @@ button {
   padding: 0.5em;
   border-radius: 5px;
 }
+
+button:hover {
+  background-color: rgb(238, 238, 238);
+}
+
 .nav-item {
   margin-left: 1em;
   border: none;
@@ -44,6 +50,7 @@ a {
   text-decoration: none;
   color: black;
 }
+
 a:visited {
   text-decoration: none;
   color: black;
@@ -103,6 +110,7 @@ a:visited {
   margin: 1em;
   margin-left: 3em;
 }
+
 .formBody {
   width: 100%;
   padding: 1em;
@@ -113,6 +121,7 @@ a:visited {
   margin: 1em;
   text-align: left;
 }
+
 .formItem input {
   width: 100%;
 }
