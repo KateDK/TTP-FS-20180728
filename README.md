@@ -5,10 +5,18 @@ The login/signup component was created with [ReactSignupLoginComponent](https://
 
 [Create React App](https://github.com/facebook/create-react-app) was used as a boilerplate to start the project.
 
-##### To run app:
+#### To run app:
 npm i
 npm run dev
 navigate to http://localhost:3000/
 
-##### App was built with:
+#### App was built with:
 Node, Express, Sequelize, PostgreSQL, React, Redux, React-Redux, React-Router.
+
+#### Screenshots:
+
+##### Homescreen/portfolio:
+![screenshot1](./client/public/screenshot_home.png)
+
+##### Transaction History:
+![screenshot2](./client/public/screenshot_transactions.png)
