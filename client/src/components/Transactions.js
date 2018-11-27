@@ -4,9 +4,6 @@ import { fetchTransactions } from '../store';
 import TransactionCard from './TransactionCard';
 
 class Transactions extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.fetchTransactions();
   }

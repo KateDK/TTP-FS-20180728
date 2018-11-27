@@ -5,8 +5,6 @@ import axios from 'axios';
  */
 
 const GET_POSITIONS = 'GET_POSITIONS';
-const UPDATE_POSITION = 'UPDATE_POSITION';
-const REMOVE_POSITION = 'REMOVE_POSITION'; //DO WE REALLY NEED THIS??
 
 /**
  * INITIAL STATE
