@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import { AuthForm, Portfolio, Transactions } from './components';
+import { loadInitialData } from './store';
 
 class Routes extends Component {
+  componentDidMount() {
+    this.props.loadInitialData();
+  }
   render() {
     const { isLoggedIn } = this.props;
     return (
@@ -29,9 +33,13 @@ const mapState = state => {
   };
 };
 
+const mapDispatch = dispatch => ({
+  loadInitialData: () => dispatch(loadInitialData()),
+});
+
 export default withRouter(
   connect(
     mapState,
-    null
+    mapDispatch
   )(Routes)
 );

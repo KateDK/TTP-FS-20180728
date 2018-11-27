@@ -59,17 +59,25 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
-    dispatch(getUser(res.data));
+    return dispatch(getUser(res.data));
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
+  }
+};
+export const loadInitialData = () => async dispatch => {
+  try {
+    const user = await axios.get('/api/auth/me');
+    return dispatch(getUser(user.data));
+  } catch (err) {
+    console.error(err);
   }
 };
 
 export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout');
-    dispatch(removeUser());
     history.push('/login');
+    return dispatch(removeUser());
   } catch (err) {
     console.error(err);
   }

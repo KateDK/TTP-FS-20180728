@@ -44,3 +44,7 @@ router.post('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
 });
+
+router.get('/me', (req, res, next) => {
+  res.json(req.user);
+});
