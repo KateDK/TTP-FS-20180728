@@ -38,9 +38,6 @@ export const createBuyStocks = (ticker, quantity) => async dispatch => {
   let res;
   try {
     res = await axios.post(`/api/user/buy/${ticker}/${quantity}`);
-    // if (res.status === 400) {
-    //   return dispatch(buyFaild(res.data));
-    // }
   } catch (err) {
     return dispatch(buyFaild(err.response.data));
   }
