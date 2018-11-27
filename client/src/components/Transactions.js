@@ -14,8 +14,8 @@ class Transactions extends Component {
     const transactions = this.props.transactions;
     return (
       <div>
-        <h1>User Transaction History</h1>
-        <ul>
+        <h3>Transaction History</h3>
+        <ul className="transactionList">
           {transactions.map(transaction => (
             <li key={transaction.id}>
               <TransactionCard transaction={transaction} />

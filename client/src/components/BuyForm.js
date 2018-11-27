@@ -27,23 +27,22 @@ class BuyForm extends Component {
 
   render() {
     const { userBalance } = this.props;
-    console.log(this.state);
+
     return (
       <div className="buyForm">
-        <h1>Your Balance: ${Number(userBalance).toFixed(2)}</h1>
+        <h3>Balance: ${Number(userBalance).toFixed(2)}</h3>
         <form onSubmit={this.handleSubmit} className="formBody">
           <div className="formItem">
-            <label>Ticker</label>
+            <label className="font">Ticker</label>
             <input
               type="text"
               name="ticker"
-              // placeholder="Ticker"
               value={this.state.ticker}
               onChange={this.handleChange}
             />
           </div>
           <div className="formItem">
-            <label>Qty</label>
+            <label className="font">Qty</label>
             <input
               type="number"
               name="quantity"

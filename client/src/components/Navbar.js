@@ -7,15 +7,15 @@ const Navbar = ({ isLoggedIn, handleClick }) =>
   isLoggedIn ? (
     <div>
       <nav className="navbar">
-        <button className="nav-item">
+        <button className="nav-item font">
           <Link to="/portfolio">Portfolio</Link>
         </button>
 
-        <button className="nav-item">
+        <button className="nav-item font">
           <Link to="/transactions">Transactions</Link>
         </button>
 
-        <button onClick={handleClick} className="nav-item ">
+        <button onClick={handleClick} className="nav-item font">
           Logout
         </button>
       </nav>

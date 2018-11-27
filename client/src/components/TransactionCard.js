@@ -15,7 +15,7 @@ import React from 'react';
 const TransactionCard = props => {
   const { action, tickerSymbol, numShares, price } = props.transaction;
   return (
-    <div>
+    <div className="transactionCard font">
       <span>{action} </span>
       <span>({tickerSymbol}) </span>
       <span>{numShares} shares </span>

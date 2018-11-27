@@ -17,7 +17,7 @@ class Portfolio extends Component {
         <div className="portfolio">
           <div>
             <h3>Total Portfolio Value: {}</h3>
-            <ul className="positionsList">
+            <ul className="positionsList font">
               {positions.map(position => (
                 <li key={position.id}>
                   <PositionCard position={position} />
