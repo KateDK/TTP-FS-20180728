@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const Request = require('request');
 const axios = require('axios');
 const { User, Position, Transaction } = require('../db/models');
 module.exports = router;
