@@ -12,6 +12,9 @@ class Transactions extends Component {
   }
   render() {
     const transactions = this.props.transactions;
+    if (!transactions.length) {
+      return <h3>No transactions yet</h3>;
+    }
     return (
       <div>
         <h3>Transaction History</h3>
