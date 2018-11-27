@@ -10,12 +10,14 @@ const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 const BUY_STOCKS = 'BUY_STOCKS';
 const BUY_FAILD = 'BUY_FAILD';
-const UPDATE_BALANCE = 'UPDATE_BALANCE';
+const BUY_SUCCESS = 'BUY_SUCCESS';
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {};
+const defaultUser = {
+  buyError: null,
+};
 
 /**
  * ACTION CREATORS
@@ -27,7 +29,7 @@ const buyStocks = stocks => ({ type: BUY_STOCKS, stocks });
 
 const buyFaild = message => ({ type: BUY_FAILD, message });
 
-const updateBalance = balance => ({ type: UPDATE_BALANCE, balance });
+const buySuccess = balance => ({ type: BUY_SUCCESS, balance });
 
 /**
  * THUNK CREATORS
@@ -36,14 +38,17 @@ export const createBuyStocks = (ticker, quantity) => async dispatch => {
   let res;
   try {
     res = await axios.post(`/api/user/buy/${ticker}/${quantity}`);
+    // if (res.status === 400) {
+    //   return dispatch(buyFaild(res.data));
+    // }
   } catch (err) {
-    return dispatch(buyFaild({ error: err }));
+    return dispatch(buyFaild(err.response.data));
   }
   try {
     return Promise.all([
       dispatch(fetchPositions()),
       dispatch(fetchTransactions()),
-      dispatch(updateBalance(res.data.balance)),
+      dispatch(buySuccess(res.data.balance)),
     ]);
   } catch (err) {
     console.log(err);
@@ -75,7 +80,7 @@ export const loadInitialData = () => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.post('/auth/logout');
+    await axios.post('/api/auth/logout');
     history.push('/login');
     return dispatch(removeUser());
   } catch (err) {
@@ -92,8 +97,10 @@ export default function(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
-    case UPDATE_BALANCE:
-      return { ...state, balance: action.balance };
+    case BUY_SUCCESS:
+      return { ...state, balance: action.balance, buyError: null };
+    case BUY_FAILD:
+      return { ...state, buyError: action.message };
     default:
       return state;
   }

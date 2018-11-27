@@ -81,7 +81,8 @@ router.post('/buy/:ticker/:quantity', async (req, res, next) => {
     const totalStockPrice = stockPrice * quantity;
 
     if (totalStockPrice > balance) {
-      res.err('Balance too low!');
+      res.status(400).send('Balance too low!');
+      return;
     } else {
       //update balance in db
       await User.update(

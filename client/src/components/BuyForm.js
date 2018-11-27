@@ -26,7 +26,7 @@ class BuyForm extends Component {
   }
 
   render() {
-    const { userBalance } = this.props;
+    const { userBalance, buyError } = this.props;
 
     return (
       <div className="buyForm">
@@ -54,13 +54,18 @@ class BuyForm extends Component {
           <button className="formItem" type="submit">
             BUY
           </button>
+          {buyError ? <p className="ERROR font">{buyError}</p> : null}
         </form>
       </div>
     );
   }
 }
 
-//export default BuyForm;
+const mapState = state => {
+  return {
+    buyError: state.user.buyError,
+  };
+};
 
 const mapDispatch = dispatch => {
   return {
@@ -69,6 +74,6 @@ const mapDispatch = dispatch => {
   };
 };
 export default connect(
-  null,
+  mapState,
   mapDispatch
 )(BuyForm);

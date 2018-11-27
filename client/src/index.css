@@ -161,3 +161,7 @@ h3 {
   letter-spacing: 2px;
   font-weight: bold;
 }
+
+.ERROR {
+  color: red;
+}
